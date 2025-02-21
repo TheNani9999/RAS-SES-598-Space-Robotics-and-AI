@@ -261,6 +261,7 @@ Students should analyze:
    - Discussion of findings
 2. Video demonstration of system performance
 3. Any additional analysis tools or visualizations created
+   
 
 Cart-Pole LQR Controller – ROS2 Implementation
 
@@ -273,7 +274,7 @@ The controller is designed to minimize deviations in cart position and pole angl
 
 State-Space Representation
 The system is modeled as a linear time-invariant (LTI) system with the state vector:
-x=[xc,xc˙,θ,θ˙]
+x= [xc,xc˙,θ,θ˙]
 where:𝑥𝑐 - cart's position
       𝑥˙𝑐- Cart's Velocity
       θ  - Pole's angle from the vertical 
