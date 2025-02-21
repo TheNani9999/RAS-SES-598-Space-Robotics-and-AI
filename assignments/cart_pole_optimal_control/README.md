@@ -312,16 +312,13 @@ This project follows an incremental tuning approach, allowing real-time analysis
 
 ## Run the Controller in ROS2
 
-1️⃣ Build and Source the ROS2 Package
+## Build and Source the ROS2 Package
 
+cd ~/ros2_ws
 colcon build
 source install/setup.bash
 
-2️⃣ Launch the Cart-Pole Simulation
-
-ros2 launch cart_pole_gazebo cart_pole.launch.py
-
-3️⃣ Run the LQR Controller
+## Run the LQR Controller
 
 ros2 run cart_pole_control cart_pole_lqr_controller
 
