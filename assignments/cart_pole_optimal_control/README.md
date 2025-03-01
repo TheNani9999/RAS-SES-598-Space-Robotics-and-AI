@@ -23,7 +23,7 @@ Clone the repository and build your workspace:
 - cd ~/ros2_ws
 - colcon build
 - source install/setup.bash
-- 
+
 ## Running the Controller
 To launch the controller, execute:
 - ros2 run cart_pole_optimal_control cart_pole_lqr_controller
@@ -124,18 +124,6 @@ https://github.com/user-attachments/assets/8b38949c-07bb-4559-acf2-4edca77acc9b
 ## Implementation Details
 This project follows an incremental tuning approach, allowing real-time analysis and modifications in ROS2 and Gazebo.
 
-## Run the Controller in ROS2
-
-## Build and Source the ROS2 Package
-
-- cd ~/ros2_ws
-- build
-- source install/setup.bash
-
-## Run the LQR Controller
-
-- ros2 run cart_pole_control cart_pole_lqr_controller
-
 ## MATLAB Simulation and Graph Analysis
 The MATLAB simulation confirms that the tuned LQR controller is stable and follows the expected behavior.
 
@@ -144,15 +132,21 @@ The cart initially moves due to the force required to stabilize the pole.
 Settles near zero within ~2.5 seconds without overshooting.
 The cart velocity peaks initially, then quickly dampens.
 
+![CP 1](https://github.com/user-attachments/assets/4a85ed72-d41c-4f73-a249-10160b6ff675)
+
 ## Pole Angle and Angular Velocity
 The pole starts with an initial angle deviation but rapidly stabilizes.
 Minimal oscillations after the first second.
 The angular velocity peaks but then damps smoothly.
 
+![CP 2](https://github.com/user-attachments/assets/fea39f55-c0dd-4c2f-9e55-7dee2625abdc)
+
 ## Control Input (Force Applied)
 The initial force is high (~10N), as expected for stabilization.
 The force reduces as the system stabilizes.
 Saturation limit of ±15N prevents excessive force application.
+
+![CP 3](https://github.com/user-attachments/assets/1bf2ec08-0e32-4863-86c1-0af57137a6da)
 
 ## The Graph
 The graph confirms that the controller is well-tuned:
