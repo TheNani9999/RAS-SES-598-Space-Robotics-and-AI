@@ -1,6 +1,3 @@
-
-   
-
 # Cart-Pole LQR Controller 
 ## Introduction
 The Cart-Pole problem is a classic control system challenge, where an inverted pendulum is balanced on a moving cart. 
@@ -13,6 +10,24 @@ The controller is designed to minimize deviations in cart position and pole angl
 Parameter tuning has been performed to optimize performance based on system stability, 
 constraint satisfaction, and control efficiency.
 
+## System Requirements
+- Ubuntu 24.04.1
+- ROS2 Jazzy
+- cart_pole_optimal_control package
+- numpy, scipy
+  
+## Installation
+Clone the repository and build your workspace:
+- cd ~/ros2_ws/src
+- git clone <repo-url>
+- cd ~/ros2_ws
+- colcon build
+- source install/setup.bash
+- 
+## Running the Controller
+To launch the controller, execute:
+- ros2 run cart_pole_optimal_control cart_pole_lqr_controller
+  
 ## State-Space Representation
 
 The cart–pole system is modeled as a *linear time-invariant (LTI) system* with the state vector:
@@ -40,13 +55,45 @@ The Q matrix determines how much each state deviation is penalized.
 A larger value in Q means that deviations in that particular state are penalized more heavily, 
 forcing the controller to correct it faster.
 
+## 1. System Parameters Updates
+
+- The cart mass (M) was updated to 1.1 kg and the pole mass (m) to 0.95 kg, improving the realism of the model.
+
+- The pole length (L) was adjusted to 1.1 m to reflect accurate physical constraints.
+
+- The gravitational acceleration (g) remains at 9.81 m/s².
+
+## 2. LQR Cost Matrix Tuning
+
+- Q matrix was set to diag([100.0, 50.0, 100.0, 10.0]), increasing weight on cart position and pole angle.
+
+- R matrix was set to [[0.01]], making the controller more aggressive in applying force.
+
+## 3. Force Clipping for Physical Actuator Limits
+
+- Control input (u) is now clipped between -15.0 and 15.0 N to prevent unrealistic force commands.
+
+- This ensures the simulated system behaves within expected actuator capabilities.
+
+## 4. State Estimation Smoothing
+
+- Applied an exponential moving average filter to state updates: self.x = 0.85 * self.x + 0.15 * new_x.
+
+- Helps reduce noise in joint state readings, leading to smoother control performance.
+
+## 5. Reference Position Oscillation
+
+- A small sinusoidal oscillation (0.5 * sin(t * 0.5)) was introduced in the desired cart position.
+
+- This helps test the controller’s ability to stabilize the system dynamically.
+
 ### Initially, the Q matrix was:
 
-Q=diag([1.0,1.0,10.0,10.0])
+- Q=diag([1.0,1.0,10.0,10.0])
 
 ### After tuning, the new Q matrix is:
 
-Q=diag([100.0,50.0,100.0,10.0])
+- Q=diag([100.0,50.0,100.0,10.0])
 
 ## The rationale behind these changes: 
 - Increased penalty on cart position (𝑄11=100.0) → Forces the cart to remain near its reference position.
@@ -63,6 +110,7 @@ Q=diag([100.0,50.0,100.0,10.0])
 This allows the controller to apply stronger forces, leading to faster stabilization. 
 The trade-off is that more aggressive control actions are allowed, but force saturation is prevented by clipping the control input to ±15N.
 
+# ATTACHMENTS
 
 https://github.com/user-attachments/assets/8b38949c-07bb-4559-acf2-4edca77acc9b
 
@@ -106,11 +154,13 @@ The initial force is high (~10N), as expected for stabilization.
 The force reduces as the system stabilizes.
 Saturation limit of ±15N prevents excessive force application.
 
-## Is the Graph Correct?
-Yes, the graph confirms that the controller is well-tuned:
+## The Graph
+The graph confirms that the controller is well-tuned:
 Fast stabilization without excessive oscillations.
 Minimal control effort after stabilization.
 Physical force constraints respected.
+
+ ![GRAPH SPACE AS 2](https://github.com/user-attachments/assets/09eed3c1-a508-4f9f-a0a5-1952724a210b)
 
 ## Future Optimizations: Bayesian Optimization
 Currently, Q and R tuning is done manually, but this can be automated using Bayesian Optimization.
@@ -118,7 +168,6 @@ Currently, Q and R tuning is done manually, but this can be automated using Baye
 ## Why Use Bayesian Optimization?
 Automatically finds the best Q and R values.
 Minimizes human effort in tuning.
-Can be extended to Reinforcement Learning for adaptive control.
 
 ## Implementation Plan
 Define an optimization objective (e.g., minimizing settling time, control effort).
@@ -133,9 +182,9 @@ Select the best-performing parameters.
 # Final Thoughts
 This project successfully implements, tunes, and validates an LQR controller for the Cart-Pole system. 
 The performance is optimized, ensuring:
-### Fast stabilization.
-### Minimal oscillations.
-### Efficient control effort.
+## Fast stabilization.
+## Minimal oscillations.
+## Efficient control effort.
 
 ## License
 This work is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
