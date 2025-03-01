@@ -1,7 +1,7 @@
 
    
 
-# Cart-Pole LQR Controller – ROS2 Implementation
+# Cart-Pole LQR Controller 
 ## Introduction
 The Cart-Pole problem is a classic control system challenge, where an inverted pendulum is balanced on a moving cart. 
 This system is inherently unstable, requiring continuous feedback control to maintain equilibrium.
@@ -13,7 +13,6 @@ The controller is designed to minimize deviations in cart position and pole angl
 Parameter tuning has been performed to optimize performance based on system stability, 
 constraint satisfaction, and control efficiency.
 
-## State-Space Representation
 ## State-Space Representation
 
 The cart–pole system is modeled as a *linear time-invariant (LTI) system* with the state vector:
@@ -63,6 +62,16 @@ Q=diag([100.0,50.0,100.0,10.0])
 
 This allows the controller to apply stronger forces, leading to faster stabilization. 
 The trade-off is that more aggressive control actions are allowed, but force saturation is prevented by clipping the control input to ±15N.
+
+
+https://github.com/user-attachments/assets/8b38949c-07bb-4559-acf2-4edca77acc9b
+
+![CART POLE1](https://github.com/user-attachments/assets/4c9bca8a-2b69-4240-b6fe-2f99037d86ea)
+
+![CART POLE2](https://github.com/user-attachments/assets/6fac5ac7-befa-4357-b867-12172c0eb04e)
+
+![CART POLE3](https://github.com/user-attachments/assets/2dec1349-c131-43dd-97a2-20fda9352f40)
+
 
 ## Implementation Details
 This project follows an incremental tuning approach, allowing real-time analysis and modifications in ROS2 and Gazebo.
@@ -116,23 +125,10 @@ Define an optimization objective (e.g., minimizing settling time, control effort
 Use Bayesian Optimization to iteratively test different Q/R values.
 Select the best-performing parameters.
 
-## Comparison of Different Q and R Values
-### To understand the effect of different Q and R values, multipliers were introduced.
-
-Q x 1.5 and R x 0.8
-Faster stabilization, but higher force usage.
-More aggressive control.
-
-Q x 0.8 and R x 1.5
-Slower stabilization, less control effort.
-More stable, but takes longer to correct deviations.
-These trade-offs demonstrate the importance of proper tuning.
-
 # Key Findings and Improvements
 ## What’s Improved?
 - Cart and pole stabilize faster with optimized Q and R matrices.
 - Minimal oscillations ensure smooth system behavior.
-- MATLAB simulation validates correctness.
 
 # Final Thoughts
 This project successfully implements, tunes, and validates an LQR controller for the Cart-Pole system. 
