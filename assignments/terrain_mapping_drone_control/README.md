@@ -14,21 +14,28 @@ ros2 run mission aruco_tracker.py
 Start the mission by running:
 ros2 run mission MissionFile.py
 
-## Mission Phases
-### Stage 1: Cylinder Estimation (Autonomous Circular Flight)
-Auto-arm and OFFBOARD Mode: The drone enters OFFBOARD mode, enabling ROS-based control.
-Takeoff to (0, 0, -5): The drone ascends to a height of -5 meters.
-Fly to (15, 0, -5): The drone moves 15 meters along the x-axis, keeping altitude constant.
-Begin Circular Trajectory: The drone executes a counter-clockwise circular trajectory with a 15-meter radius, capturing images from its front RGB and depth cameras at each step.
-Hover for 5 Seconds: After completing one revolution, the drone hovers for analysis.
+## Mission Overview
 
-## Stage 2: Marker Landing
-Fly to (0, 0, -13): The drone descends to start the marker detection phase.
-Fly to (0, 5, -13) and Hover for 5 Seconds: The drone hovers while recording the first marker.
-Fly to (0, -5, -13) and Hover for 5 Seconds: The drone hovers and records the second marker.
-Compare Markers by Depth: The drone evaluates the markers based on their depth values, selecting the closest one.
-Lateral Approach to Selected Marker: The drone adjusts its path to directly approach the marker.
-Landing: The drone uses Image-Based Visual Servoing to land by minimizing errors in the image space.
+### Stage 1: Cylinder Estimation (Autonomous Circle Flight)
+
+1. Auto-arm and OFFBOARD mode
+2. Take off vertically to (0, 0, -5)
+3. Fly to (15, 0, -5)
+4. Begin circular trajectory of radius 15 m, counter-clockwise
+5. At each step, analyze `/drone/front_rgb` + `/drone/front_depth` for cylinders
+6. After **one full revolution**, hover for 5 seconds
+
+### Stage 2: Marker Landing (IBVS)
+
+1. Fly to (0, 0, -13)
+2. Fly to (0, 5, -13), hover for 5 s, record marker sample
+3. Return to center
+4. Fly to (0, -5, -13), hover for 5 s, record second marker
+5. Compare both markers by depth → choose closest
+6. Laterally approach selected marker
+7. Perform **IBVS landing** using marker pixel offset and drone altitude
+
+---
 
 ## Mathematical Details
 ### 1. Cylinder Size Estimation
