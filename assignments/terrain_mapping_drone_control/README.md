@@ -181,3 +181,16 @@ Where:
 ```math
 \sqrt{e_x^2 + e_y^2 + e_z^2} < 0.1 \Rightarrow \text{LAND}
 ```
+Where:
+
+𝑒
+𝑥
+,
+𝑒
+𝑦
+,
+𝑒
+𝑧 are the errors in x, y, and z.
+
+# Summary
+This mission involves a combination of autonomous navigation via circular flight and marker-based landing using IBVS. The formulas ensure precise flight control, cylinder detection, and marker-based landing, enabling the drone to operate autonomously and efficiently.
