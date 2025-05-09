@@ -1,4 +1,6 @@
-
+# =======================
+#        IMPORTS
+# =======================
 import rclpy
 from rclpy.node import Node
 from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy, DurabilityPolicy
@@ -11,6 +13,9 @@ from px4_msgs.msg import (
 )
 from std_msgs.msg import Float64
 
+# =======================
+#     MAIN FLIGHT NODE
+# =======================
 class SpiralToHover(Node):
     def __init__(self):
         super().__init__('spiral_to_hover')
@@ -23,6 +28,9 @@ class SpiralToHover(Node):
             depth=1
         )
 
+        # --------------------
+        #    PUBLISHERS
+        # --------------------
         self.offboard_control_mode_pub = self.create_publisher(OffboardControlMode, '/fmu/in/offboard_control_mode', qos_profile)
         self.trajectory_setpoint_pub = self.create_publisher(TrajectorySetpoint, '/fmu/in/trajectory_setpoint', qos_profile)
         self.vehicle_command_pub = self.create_publisher(VehicleCommand, '/fmu/in/vehicle_command', qos_profile)
@@ -30,9 +38,15 @@ class SpiralToHover(Node):
         self.gimbal_roll_pub  = self.create_publisher(Float64, '/model/x500_gimbal_0/command/gimbal_roll', 10)
         self.gimbal_yaw_pub   = self.create_publisher(Float64, '/model/x500_gimbal_0/command/gimbal_yaw', 10)
 
+        # --------------------
+        #    SUBSCRIBERS
+        # --------------------
         self.vehicle_odometry_sub = self.create_subscription(VehicleOdometry, '/fmu/out/vehicle_odometry', self.vehicle_odometry_callback, qos_profile)
         self.vehicle_status_sub   = self.create_subscription(VehicleStatus, '/fmu/out/vehicle_status', self.vehicle_status_callback, qos_profile)
 
+        # --------------------
+        #     VARIABLES
+        # --------------------
         self.vehicle_odometry = VehicleOdometry()
         self.vehicle_status = VehicleStatus()
         self.offboard_setpoint_counter = 0
@@ -53,6 +67,9 @@ class SpiralToHover(Node):
         self.state = "TAKEOFF"
         self.create_timer(0.05, self.timer_callback)
 
+    # ================================
+    #     CALLBACKS & STATE METHODS
+    # ================================
     def vehicle_odometry_callback(self, msg):
         self.vehicle_odometry = msg
         self.update_gimbal()
@@ -76,7 +93,9 @@ class SpiralToHover(Node):
         self.gimbal_pitch_pub.publish(msg)
         self.gimbal_roll_pub.publish(msg)
 
-
+    # =======================
+    #     FLIGHT COMMANDS
+    # =======================
     def arm(self):
         cmd = VehicleCommand()
         cmd.command = VehicleCommand.VEHICLE_CMD_COMPONENT_ARM_DISARM
@@ -116,7 +135,9 @@ class SpiralToHover(Node):
         sp.timestamp = int(self.get_clock().now().nanoseconds / 1000)
         self.trajectory_setpoint_pub.publish(sp)
 
- 
+    # =======================
+    #    HELPER FUNCTIONS
+    # =======================
     def is_at_altitude(self, target):
         try:
             current = -self.vehicle_odometry.position[2]
@@ -132,7 +153,9 @@ class SpiralToHover(Node):
         yaw = math.atan2(-y, -x)
         return x, y, z, yaw
 
-
+    # =======================
+    #   MAIN STATE MACHINE
+    # =======================
     def timer_callback(self):
         if self.offboard_setpoint_counter == 10:
             self.engage_offboard()
@@ -142,6 +165,7 @@ class SpiralToHover(Node):
 
         self.publish_offboard()
 
+        # === STATE: TAKEOFF ===
         if self.state == "TAKEOFF":
             target = self.altitude_steps[0]
             if not self.is_at_altitude(target):
@@ -153,6 +177,7 @@ class SpiralToHover(Node):
                 self.loop_start_time = time.time()
                 self.get_logger().info("Takeoff complete. Starting loops.")
 
+        # === STATE: LOOP ===
         elif self.state == "LOOP":
             t = time.time() - self.loop_start_time
             target_alt = self.altitude_steps[self.current_loop]
@@ -169,7 +194,7 @@ class SpiralToHover(Node):
                     self.state = "RETURN"
                     self.get_logger().info("Loops complete. Returning to origin.")
 
-
+        # === STATE: RETURN ===
         elif self.state == "RETURN":
             target_alt = self.altitude_steps[-1]
             self.publish_setpoint(0.0, 0.0, -target_alt, 0.0)
@@ -181,7 +206,7 @@ class SpiralToHover(Node):
                 self.state = "CLIMB"
                 self.get_logger().info("Origin reached. Climbing.")
 
-     
+        # === STATE: CLIMB ===
         elif self.state == "CLIMB":
             self.publish_setpoint(0.0, 0.0, -self.climb_altitude, 0.0)
             if self.is_at_altitude(self.climb_altitude):
@@ -192,7 +217,7 @@ class SpiralToHover(Node):
             else:
                 self.get_logger().info("Climbing...")
 
-    
+        # === STATE: HOVER ===
         elif self.state == "HOVER":
             if self.hover_phase == "first_side":
                 self.publish_setpoint(0.0, 3.0, -self.climb_altitude, 0.0)
@@ -205,6 +230,9 @@ class SpiralToHover(Node):
 
         self.offboard_setpoint_counter += 1
 
+# =======================
+#        MAIN
+# =======================
 def main():
     rclpy.init()
     node = SpiralToHover()
