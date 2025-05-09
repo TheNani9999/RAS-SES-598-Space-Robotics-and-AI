@@ -212,9 +212,9 @@ I would like to thank my friend Bharat for his valuable support and guidance thi
 ## 3. Landing:
 ![TIME TO LAND](https://github.com/user-attachments/assets/8814a733-433d-46bc-8089-731776d542d5)
 
-![CHECKING](https://github.com/user-attachments/assets/0a4dda2a-dcd5-4eae-a4fa-b01e49976a5e)
-
 ![CHECKING1](https://github.com/user-attachments/assets/7d9d1ca3-6bb7-4173-b4bb-2e104f8b7c7c)
+
+![CHECKING](https://github.com/user-attachments/assets/0a4dda2a-dcd5-4eae-a4fa-b01e49976a5e)
 
 ![LANDING POINT](https://github.com/user-attachments/assets/8c328b20-49ff-4f7f-a642-e1304386bd76)
 
