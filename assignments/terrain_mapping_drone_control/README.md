@@ -125,13 +125,23 @@ Z is the current altitude,
 𝑑
 𝑒
 𝑠 is the desired altitude (usually 0, representing the ground level).
-```
 
 #### Control Gains
 
 ```math
 K_{\text{LAT}} = 0.1; \quad K_{\text{ALT}} = 0.05; \quad \Delta t = 0.1\; \text{s}
 ```
+Where:
+
+𝐾
+𝐿
+𝐴
+𝑇
+  and 
+𝐾
+𝐴
+𝐿
+𝑇 are the control gains for lateral and altitude movements, respectively.
 
 #### Velocity Commands
 
@@ -148,7 +158,24 @@ X_{\text{next}} = X + v_x \cdot \Delta t,
 Y_{\text{next}} = Y + v_y \cdot \Delta t,
 Z_{\text{next}} = Z + v_z \cdot \Delta t
 ```
+Where:
 
+𝑋
+,
+𝑌
+,
+𝑍 are the current positions,
+
+𝑣
+𝑥
+,
+𝑣
+𝑦
+,
+𝑣
+𝑧 are the velocity commands,
+
+Δt is the time step.
 #### Trigger Landing
 
 ```math
