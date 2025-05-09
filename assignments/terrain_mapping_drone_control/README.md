@@ -22,18 +22,17 @@ ros2 run mission MissionFile.py
 2. Take off vertically to (0, 0, -5)
 3. Fly to (15, 0, -5)
 4. Begin circular trajectory of radius 15 m, counter-clockwise
-5. At each step, analyze `/drone/front_rgb` + `/drone/front_depth` for cylinders
-6. After **one full revolution**, hover for 5 seconds
-
+5. The drone begins a counter-clockwise circular flight with radius 15 meters, and at each step, it checks for cylinders using the front RGB and depth images.
+6. Hover for 5 seconds after one full revolution to allow cylinder analysis
 ### Stage 2: Marker Landing 
 
-1. Fly to (0, 0, -13)
-2. Fly to (0, 5, -13), hover for 5 s, record marker sample
+1. Fly to (0, 0, -13), The drone descends to a position where it can begin the marker detection phase.
+2. Fly to (0, 5, -13), The drone hovers at this position and records the first marker.
 3. Return to center
-4. Fly to (0, -5, -13), hover for 5 s, record second marker
-5. Compare both markers by depth → choose closest
-6. Laterally approach selected marker
-7. Perform **IBVS landing** using marker pixel offset and drone altitude
+4. Fly to (0, -5, -13), hover for 5 s, The drone hovers at this new position and records the second marker.
+5. The drone compares the two markers and selects the one closer to the camera by checking their depth values.
+6. The drone adjusts its position to approach the marker more directly.
+7. The drone uses Image-Based Visual Servoing to land by minimizing errors in the image space.
 
 ---
 ## Mathematical Details
