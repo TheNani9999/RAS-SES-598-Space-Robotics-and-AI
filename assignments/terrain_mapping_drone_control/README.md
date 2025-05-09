@@ -52,10 +52,7 @@ Where:
 𝑚
 ,
 ℎ
-𝑚
-
-​
-  are the real-world width and height (meters),
+𝑚 are the real-world width and height (meters),
 
 𝑤
 𝑝
@@ -63,10 +60,7 @@ Where:
 ,
 ℎ
 𝑝
-𝑥
-
-​
-  are the pixel dimensions of the cylinder’s bounding box,
+𝑥 are the pixel dimensions of the cylinder’s bounding box,
 
 
 Z is the depth (distance from the camera),
@@ -75,11 +69,8 @@ Z is the depth (distance from the camera),
 𝑥
 ,
 𝑓
-𝑦
+𝑦 are the focal lengths of the camera (in pixels).
 
-​
-  are the focal lengths of the camera (in pixels).
----
 
 ### 2. Circle Flight Path
 
@@ -99,9 +90,8 @@ are the coordinates on the circle,
 
 R is the radius of the circle (meters),
 
-𝜃
-is the angular position in radians.
----
+𝜃 is the angular position in radians.
+
 
 ### 3. (Image-Based Visual Servoing) Control
 
