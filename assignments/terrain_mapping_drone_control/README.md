@@ -46,13 +46,51 @@ To compute real-world width and height from bounding box:
 w_m = \frac{w_{px} \cdot Z}{f_x}, \quad
 h_m = \frac{h_{px} \cdot Z}{f_y}
 ```
-where
-Bounding box and intrinsics:
-```math
-w_{px}, h_{px} are  the  real-world  width  and  height  (meters),
+Where:
+
+𝑤
+𝑚
+,
+ℎ
+𝑚
+w 
+m
+​
+ ,h 
+m
+​
+  are the real-world width and height (meters),
+
+𝑤
+𝑝
+𝑥
+,
+ℎ
+𝑝
+𝑥
+w 
+px
+​
+ ,h 
+px
+​
+  are the pixel dimensions of the cylinder’s bounding box,
+
+𝑍
 Z is the depth (distance from the camera),
-f_x, f_y are the focal lengths of the camera (in pixels).
-```
+
+𝑓
+𝑥
+,
+𝑓
+𝑦
+f 
+x
+​
+ ,f 
+y
+​
+  are the focal lengths of the camera (in pixels).
 ---
 
 ### 2. Circle Flight Path
