@@ -49,7 +49,7 @@ h_m = \frac{h_{px} \cdot Z}{f_y}
 where
 Bounding box and intrinsics:
 ```math
-w_{px}, h_{px} are the real-world width and height (meters),
+w_{px}, h_{px} are  the  real-world  width  and  height  (meters),
 Z is the depth (distance from the camera),
 f_x, f_y are the focal lengths of the camera (in pixels).
 ```
