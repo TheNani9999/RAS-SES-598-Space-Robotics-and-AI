@@ -193,4 +193,31 @@ Where:
 𝑧 are the errors in x, y, and z.
 
 # Summary
-This mission involves a combination of autonomous navigation via circular flight and marker-based landing using IBVS. The formulas ensure precise flight control, cylinder detection, and marker-based landing, enabling the drone to operate autonomously and efficiently.
+This mission involves a combination of autonomous navigation via circular flight and marker-based landing using Image-Based Visual Servoing. The formulas ensure precise flight control, cylinder detection, and marker-based landing, enabling the drone to operate autonomously and efficiently.
+
+I would like to thank my friend Bharat for his valuable support and guidance this assignment.
+
+# Attachments
+## 1. Estimating the Cylinders:
+![ESTIMATION](https://github.com/user-attachments/assets/792eae45-a9cb-4a10-a8f9-4801534c6800)
+![ESTIMATION1](https://github.com/user-attachments/assets/ae678afe-e3bc-422f-a0be-043c7a566f5c)
+
+
+## 2. Tracking ArUco Markers:
+![TRACKING](https://github.com/user-attachments/assets/f587558f-0997-4d3b-8e8a-b34e9055bdc1)
+![TRACKING1](https://github.com/user-attachments/assets/ea80a989-6694-48cc-82df-7aa764f0216f)
+![TRACKING2](https://github.com/user-attachments/assets/4bab239b-d071-4437-b919-12b9b55f3acf)
+
+
+## 3. Landing:
+![TIME TO LAND](https://github.com/user-attachments/assets/8814a733-433d-46bc-8089-731776d542d5)
+
+![CHECKING](https://github.com/user-attachments/assets/0a4dda2a-dcd5-4eae-a4fa-b01e49976a5e)
+
+![CHECKING1](https://github.com/user-attachments/assets/7d9d1ca3-6bb7-4173-b4bb-2e104f8b7c7c)
+
+![LANDING POINT](https://github.com/user-attachments/assets/8c328b20-49ff-4f7f-a642-e1304386bd76)
+
+![FINAL LANDING](https://github.com/user-attachments/assets/6aba6139-187f-4053-8c07-0921a6173a22)
+
+
