@@ -53,11 +53,7 @@ Where:
 ,
 ℎ
 𝑚
-w 
-m
-​
- ,h 
-m
+
 ​
   are the real-world width and height (meters),
 
@@ -68,15 +64,11 @@ m
 ℎ
 𝑝
 𝑥
-w 
-px
-​
- ,h 
-px
+
 ​
   are the pixel dimensions of the cylinder’s bounding box,
 
-𝑍
+
 Z is the depth (distance from the camera),
 
 𝑓
@@ -84,11 +76,7 @@ Z is the depth (distance from the camera),
 ,
 𝑓
 𝑦
-f 
-x
-​
- ,f 
-y
+
 ​
   are the focal lengths of the camera (in pixels).
 ---
@@ -101,12 +89,18 @@ The drone follows:
 x = R \cos\theta, \quad y = R \sin\theta, \quad z = -5
 ```
 
-One full revolution is complete when:
+Where:
 
-```math
-|\theta - \theta_0| \geq 2\pi
-```
+𝑥
+,
+𝑦
+are the coordinates on the circle,
 
+
+R is the radius of the circle (meters),
+
+𝜃
+is the angular position in radians.
 ---
 
 ### 3. (Image-Based Visual Servoing) Control
