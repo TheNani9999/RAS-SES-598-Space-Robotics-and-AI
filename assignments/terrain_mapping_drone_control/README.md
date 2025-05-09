@@ -193,9 +193,7 @@ Where:
 𝑧 are the errors in x, y, and z.
 
 # Summary
-This mission involves a combination of autonomous navigation via circular flight and marker-based landing using Image-Based Visual Servoing. The formulas ensure precise flight control, cylinder detection, and marker-based landing, enabling the drone to operate autonomously and efficiently.
-
-I would like to thank my friend Bharat for his valuable support and guidance this assignment.
+This mission involves a combination of autonomous navigation via circular flight and marker-based landing using Image-Based Visual Servoing. The formulas ensure precise flight control, cylinder detection, and marker-based landing, enabling the drone to operate autonomously and efficiently. I would like to thank my friend Bharat for his valuable support and guidance in this assignment.
 
 # Attachments
 ## 1. Estimating the Cylinders:
