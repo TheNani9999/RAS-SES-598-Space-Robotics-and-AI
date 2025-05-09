@@ -102,11 +102,29 @@ e_x = x_m \quad,
 e_y = y_m \quad,
 e_z = Z - Z_{\text{des}}
 ```
-where
-```math
-(x_m, y_m) \quad \text{marker error in image space},
-Z \quad \text{current drone altitude},
-Z_{\text{des}} = 0 \quad \text{desired ground level}
+Where:
+
+𝑒
+𝑥
+,
+𝑒
+𝑦
+,
+𝑒
+𝑧 are the errors in the image space and altitude,
+
+𝑥
+𝑚
+,
+𝑦
+𝑚 are the marker errors in the image (pixels),
+
+Z is the current altitude,
+
+𝑍
+𝑑
+𝑒
+𝑠 is the desired altitude (usually 0, representing the ground level).
 ```
 
 #### Control Gains
