@@ -91,5 +91,17 @@ To determine how well the reconstructed model matches the input imagery, we calc
 ## Software-Aided Alignment and Comparison:
 Tools like CloudCompare were used to align the original and enhanced models for direct comparison. This allows for a visual and numerical inspection of improvements or degradations across metrics such as point-to-point distance, change in surface area, or density distribution.
 
+![CloudCompare](https://github.com/user-attachments/assets/9a56f5f6-79e0-4906-b1de-aa21e965d419)
+
+
+## Key Observations:
+Faces: Increased from 100k to 125k.
+
+Vertices: Increased from 55k to 65k.
+
+Effect on Model Quality: The fundamental nature of Gaussian splatting didn’t add much new information, leading to minimal improvement.
+
+Quality Deterioration: Noise from new viewpoints caused deterioration in some areas, with noticeable increases in texture reprojection error.
+
 
 
