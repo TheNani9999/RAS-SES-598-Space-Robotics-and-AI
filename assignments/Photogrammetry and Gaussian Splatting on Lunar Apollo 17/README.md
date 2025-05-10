@@ -46,7 +46,9 @@ https://github.com/user-attachments/assets/55b195a3-46be-400c-93b8-794833937956
 
 Gaussian splatting was performed using NeRFStudio, with the training process taking approximately 45 minutes!
 
-https://github.com/user-attachments/assets/da62617e-ed4f-466f-9cbd-7ec9fc12428e---_______
+https://github.com/user-attachments/assets/da62617e-ed4f-466f-9cbd-7ec9fc12428e
+
+
 {
   "experiment_name": "Apollo",
   "method_name": "splatfacto",
@@ -64,7 +66,9 @@ https://github.com/user-attachments/assets/da62617e-ed4f-466f-9cbd-7ec9fc12428e-
     "fps_std": null
   }
 }
-_______
+
+
+
 ![Results](https://github.com/user-attachments/assets/53b881ed-4b67-4ee7-882d-95fa4e096263)
 
 From a quantitative standpoint, the final results were: PSNR = 16.342, SSIM = 0.238, and LPIPS = 0.681.
