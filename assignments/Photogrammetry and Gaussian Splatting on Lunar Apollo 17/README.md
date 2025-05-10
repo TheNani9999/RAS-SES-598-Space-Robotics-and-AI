@@ -20,8 +20,8 @@ We first used **Agisoft Metashape** for 3D reconstruction. The following steps w
 3. **Build Model**  
 ![AS4 4 MODEL BUILD](https://github.com/user-attachments/assets/44e75117-ff50-4597-992f-0fbeb301b018)
 
-![AS4 4 MODEL BUILD](https://github.com/user-attachments/assets/b837b5fe-406c-4651-94f7-de206e776aa2)
 
+![AS4 5 MB](https://github.com/user-attachments/assets/d342ae4f-2611-4324-bc9e-1a8ec543bd41)
 
 
 5. **Build Texture**  
@@ -47,6 +47,24 @@ https://github.com/user-attachments/assets/55b195a3-46be-400c-93b8-794833937956
 Gaussian splatting was performed using NeRFStudio, with the training process taking approximately 45 minutes!
 
 https://github.com/user-attachments/assets/da62617e-ed4f-466f-9cbd-7ec9fc12428e
+
+{
+  "experiment_name": "Apollo",
+  "method_name": "splatfacto",
+  "checkpoint": "outputs/Apollo/splatfacto/2025-05-08_141200/nerfstudio_models/step-000025000.ckpt",
+  "results": {
+    "psnr": 16.34219264984131,
+    "psnr_std": null,
+    "ssim": 0.2381298542022705,
+    "ssim_std": null,
+    "lpips": 0.6810271730422974,
+    "lpips_std": null,
+    "num_rays_per_sec": 712345.25,
+    "num_rays_per_sec_std": null,
+    "fps": 0.5193849201202393,
+    "fps_std": null
+  }
+}
 
 From a quantitative standpoint, the final results were: PSNR = 16.342, SSIM = 0.238, and LPIPS = 0.681.
 PSNR (Peak Signal-to-Noise Ratio) of 16.342 suggests a suboptimal reconstruction quality.
