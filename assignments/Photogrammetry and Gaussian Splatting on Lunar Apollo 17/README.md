@@ -91,7 +91,7 @@ To determine how well the reconstructed model matches the input imagery, we calc
 ## Software-Aided Alignment and Comparison:
 Tools like CloudCompare were used to align the original and enhanced models for direct comparison. This allows for a visual and numerical inspection of improvements or degradations across metrics such as point-to-point distance, change in surface area, or density distribution.
 
-![CloudCompare](https://github.com/user-attachments/assets/9a56f5f6-79e0-4906-b1de-aa21e965d419)
+![CloudCompare](https://github.com/user-attachments/assets/441e1d76-9361-4743-aee6-e730a8d89bb3)
 
 
 ## Key Observations:
