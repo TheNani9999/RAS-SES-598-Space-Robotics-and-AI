@@ -28,6 +28,15 @@ We first used **Agisoft Metashape** for 3D reconstruction. The following steps w
 ![AS4 6 TEXTURE](https://github.com/user-attachments/assets/5242f487-967b-4a47-9c66-3a39325e6f48)
 
 ![AS4 7](https://github.com/user-attachments/assets/4f1d03d1-fad7-4008-8c69-b520f418e9b3)
+## MESH
+
+![MESH1](https://github.com/user-attachments/assets/a4c0ee0d-dea6-4077-9ddd-caa36d2496a0)
+
+
+![MESH2](https://github.com/user-attachments/assets/5f063726-0ae3-4057-a0bf-8119da84af01)
+
+
+![MESH3](https://github.com/user-attachments/assets/b4b61fb3-650c-4a84-9f9e-7d0860ef94c5)
 
 
 ## Photogrammetry using COLMAP
